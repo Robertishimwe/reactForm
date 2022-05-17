@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,200&display=swap');
+@import './variable.scss';
+.registrationFormBack {
+    background-image: url('../asset/OneOnly-Nyungwe-House-1.jpeg');
+    width: 100%;
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+}
+
+.Actualform {
+    width: 30%;
+    height: 83vh;
+    border-radius: 6px;
+    background-color: $secondaryColor;
+    margin-top: 100px;
+}
+
+.registrationTitle {
+    font-family: $text, sans-serif;
+    color: $primaryColor;
+    font-size: 1.1em;
+    font-weight: 800;
+    padding-left: 30px;
+}
+
+label {
+    font-family: $text, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    padding-left: 30px;
+}
+
+input {
+    font-family: $text, sans-serif;
+    width: 80%;
+    height: 2em;
+    font-size: 1em;
+    font-weight: 500;
+    margin-left: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+p {
+    font-family: $text, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    padding-left: 30px;
+}
+
+.errorMassage {
+    font-size: 12px;
+    font-weight: 200;
+    color: $errorColor;
+    margin-top: 0px;
+}
+
+button {
+    font-family: $text, sans-serif;
+    width: 82%;
+    height: 2em;
+    font-size: 1em;
+    font-weight: bolder;
+    padding-left: 30px;
+    margin-left: 30px;
+    border-radius: 5px;
+    border: 1px solid $primaryColor;
+    background-color: $primaryColor;
+    color: $secondaryColor;
+}
+
+.titeSocialAouth {
+    font-family: $text, sans-serif;
+    font-size: 1em;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.socialBudges {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    height: 8vh;
+}
+
+.facebook {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.google:hover {
+    box-shadow: $primaryColor 0px 3px 2px;
+}
+
+.facebook:hover {
+    box-shadow: $primaryColor 0px 3px 2px;
+}
