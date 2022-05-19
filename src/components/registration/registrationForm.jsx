@@ -2,6 +2,7 @@ import FormInPuts from './formInPuts';
 import facebook from '../../asset/icons8-facebook.svg';
 import google from '../../asset/icons8-google.svg';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import '../../styles/registration.scss';
 
 function RegistrationForm() {
@@ -19,6 +20,17 @@ function RegistrationForm() {
   const nameRigex = /^[a-z]+$/i;
   const emailRigex = /\w+@[a-zA-Z]+\.[com|net|rw|org|edu|co|shop|air]/;
   const passwordRigex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{4,}$/;
+  const [disabled, setdisabled] = useState(true);
+  const [stopRender, setstopRender] = useState(false);
+
+  useEffect(() => {
+    FirstNameError === '' &&
+    LastNameError === '' &&
+    EmailError === '' &&
+    PasswordError === ''
+      ? setdisabled(false)
+      : setdisabled(true);
+  }, [FirstNameError, LastNameError, EmailError, PasswordError]);
 
   useEffect(() => {
     let nameTest = nameRigex.test(values.firstName);
@@ -41,7 +53,7 @@ function RegistrationForm() {
 
   useEffect(() => {
     let emailTest = emailRigex.test(values.email);
-    emailTest === true
+    emailTest
       ? setEmailError(() => '')
       : setEmailError(() => 'Please enter a valid email');
   }, [values.email]);
@@ -87,13 +99,25 @@ function RegistrationForm() {
   ];
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(passwordTest);
+    setstopRender(true);
+    if (!disabled) {
+      axios({
+        method: 'post',
+        url: 'https://barefoot-nom-ft-login-w-qsksbd.herokuapp.com/api/auth/register',
+        data: JSON.stringify(values),
+      })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-  console.log(values);
   return (
     <div className="registrationFormBack">
       <div className="Actualform">
@@ -103,7 +127,7 @@ function RegistrationForm() {
             <FormInPuts key={input.id} {...input} onChange={onChange} />
           ))}
           <br />
-          <button>Create account</button>
+          <button disabled={disabled}>Create account</button>
         </form>
         <p className="titeSocialAouth">Or continue with</p>
         <div className="socialBudges">
